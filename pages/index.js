@@ -26,6 +26,8 @@ export default function Home({transactions, rawFileContents}) {
                 <link rel="icon" href="/favicon.ico"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com"/>
                 <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet"/>
+                <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+                <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet" />
             </Head>
 
             <main>
@@ -87,6 +89,10 @@ export default function Home({transactions, rawFileContents}) {
                 flex-direction: column;
                 margin: 20px 0 12px 0;
               }
+              
+              .transactions {
+                  font-family: 'Roboto', sans-serif;
+              }
 
               code {
                 background: #fafafa;
@@ -117,10 +123,52 @@ export default function Home({transactions, rawFileContents}) {
 
 function Transaction({date, amount, merchant}) {
     return (
-        <div className="transaction">
-            <p>{merchant}</p>
-            <p>{date}</p>
-            <p>{amount}</p>
-        </div>
+        <>
+            <div className="transaction">
+                <div className="merchant">{merchant}</div>
+                <div className="date">{date}</div>
+                <div className="amount">{amount}</div>
+            </div>
+
+            <style jsx>{`
+                .transaction {
+                    display: grid;
+                    grid-template-areas: "merchant amount"
+                                         "date     amount";
+                    grid-template-columns: 1fr 100px;
+                    
+                }
+                
+                .transaction::after {
+                    content: '';
+                    display: block;
+                    height: 3px;
+                    width: 80px;
+                    background: #1d539f;
+                    position: relative;
+                    left: calc(50% - 80px/2);
+                }
+                
+                .merchant {
+                    grid-area: merchant;
+                    padding: 6px;
+                }
+                
+                .date {
+                    grid-area: date;
+                    padding: 6px;
+                }
+                
+                .amount {
+                    grid-area: amount;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 6px;
+                    font-family: 'Roboto Mono', monospace;
+                    font-weight: 600;
+                }
+            `}</style>
+        </>
     )
 }
