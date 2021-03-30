@@ -186,7 +186,7 @@ function Transaction({date, amount, merchant}) {
                     grid-area: amount;
                     display: flex;
                     align-items: center;
-                    justify-content: end;
+                    justify-content: flex-end;
                     padding: 6px 16px 6px 6px;
                     font-family: 'Roboto Mono', monospace;
                     font-weight: 600;
