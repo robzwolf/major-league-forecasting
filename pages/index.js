@@ -87,10 +87,11 @@ export default function Home({transactions, rawFileContents}) {
 
               header {
                 width: 100%;
-                background: #f7f7f7;
                 position: sticky;
                 top: 0;
                 z-index: 1000;
+                background: #f9f9f9;
+                border-bottom: 4px solid black;
               }
 
               header h1 {
@@ -134,7 +135,7 @@ export default function Home({transactions, rawFileContents}) {
 function Transaction({date, amount, merchant}) {
     return (
         <>
-            <div className="transaction">
+            <div className={["transaction", amount >= 0 ? "income" : "expense"].join(" ")}>
                 <div className="merchant">{merchant}</div>
                 <div className="date">{date}</div>
                 <div className="amount">{amount.toFixed(2)}</div>
@@ -147,16 +148,28 @@ function Transaction({date, amount, merchant}) {
                                          "date     amount";
                     grid-template-columns: 1fr 100px;
                     text-align: left;
+                    position: relative;
                 }
                 
                 .transaction::after {
                     content: '';
                     display: block;
-                    height: 3px;
-                    width: 80px;
-                    background: #1d539f;
-                    position: relative;
-                    left: calc(50% - 80px/2);
+                    height: 2px;
+                    width: 180px;
+                    background: #e0e8f3;
+                    position: absolute;
+                    left: calc(50% - 180px/2);
+                    bottom: 0;
+                }
+                
+                .transaction.income {
+                    color: #2d6200;
+                    background: #e9fae9;
+                }
+                
+                .transaction.expense {
+                    color: #430707;
+                    background: #fcf3f3;
                 }
                 
                 .merchant {
