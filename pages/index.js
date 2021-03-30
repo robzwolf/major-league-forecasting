@@ -11,7 +11,14 @@ export async function getStaticProps() {
             rawFileContents: fileContents,
             transactions: Papa.parse(fileContents, {
                 header: true,
-                delimiter: ","
+                delimiter: ",",
+                transform: (value, columnName) => {
+                    if (columnName === "Amount") {
+                        return parseFloat(value);
+                    }
+
+                    return value;
+                }
             }).data
         }
     }
@@ -127,7 +134,7 @@ function Transaction({date, amount, merchant}) {
             <div className="transaction">
                 <div className="merchant">{merchant}</div>
                 <div className="date">{date}</div>
-                <div className="amount">{amount}</div>
+                <div className="amount">{amount.toFixed(2)}</div>
             </div>
 
             <style jsx>{`
