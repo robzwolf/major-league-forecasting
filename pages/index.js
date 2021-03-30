@@ -46,7 +46,7 @@ export default function Home({transactions, rawFileContents}) {
                     </h1>
                 </header>
                 <div className="transactions">
-                    {transactions.map(transaction => (
+                    {transactions.map(transaction => (transaction.Amount &&
                         <Transaction
                             date={transaction.Date}
                             amount={transaction.Amount}
