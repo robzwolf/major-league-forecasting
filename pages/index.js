@@ -136,7 +136,7 @@ function Transaction({date, amount, merchant}) {
                     grid-template-areas: "merchant amount"
                                          "date     amount";
                     grid-template-columns: 1fr 100px;
-                    
+                    text-align: left;
                 }
                 
                 .transaction::after {
@@ -151,20 +151,20 @@ function Transaction({date, amount, merchant}) {
                 
                 .merchant {
                     grid-area: merchant;
-                    padding: 6px;
+                    padding: 12px 6px 3px 16px;
                 }
                 
                 .date {
                     grid-area: date;
-                    padding: 6px;
+                    padding: 3px 6px 12px 16px;
                 }
                 
                 .amount {
                     grid-area: amount;
                     display: flex;
                     align-items: center;
-                    justify-content: center;
-                    padding: 6px;
+                    justify-content: end;
+                    padding: 6px 16px 6px 6px;
                     font-family: 'Roboto Mono', monospace;
                     font-weight: 600;
                 }
