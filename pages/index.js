@@ -88,6 +88,9 @@ export default function Home({transactions, rawFileContents}) {
               header {
                 width: 100%;
                 background: #f7f7f7;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
               }
 
               header h1 {
