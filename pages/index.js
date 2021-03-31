@@ -165,6 +165,11 @@ function Forecast({day, minTemp, maxTemp, weather}) {
                     grid-template-columns: 1fr 100px;
                     text-align: left;
                     position: relative;
+                    width: 100vw;
+                }
+                
+                .forecast:nth-child(2n) {
+                    background: #76cfe4;
                 }
                 
                 .forecast::after {
@@ -180,12 +185,13 @@ function Forecast({day, minTemp, maxTemp, weather}) {
                 
                 .day {
                     grid-area: day;
-                    padding: 12px 6px 3px 16px;
+                    padding: 12px 6px 3px 36px;
+                    font-weight: 600;
                 }
                 
                 .temp {
                     grid-area: temp;
-                    padding: 3px 6px 12px 16px;
+                    padding: 3px 6px 12px 36px;
                 }
                 
                 .weather {
@@ -193,7 +199,7 @@ function Forecast({day, minTemp, maxTemp, weather}) {
                     display: flex;
                     align-items: center;
                     justify-content: flex-end;
-                    padding: 6px 16px 6px 6px;
+                    padding: 6px 36px 6px 6px;
                     font-family: 'Roboto Mono', monospace;
                     font-weight: 600;
                 }
