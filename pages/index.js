@@ -58,6 +58,7 @@ export default function Home({ weather }) {
                             minTemp={forecast.temp.min}
                             maxTemp={forecast.temp.max}
                             weather={forecast.weather[0].main}
+                            key={forecast.dt}
                         />
                     ))}
                 </div>
