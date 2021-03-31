@@ -1,6 +1,36 @@
 import Head from 'next/head'
 
-export default function Home() {
+export async function getServerSideProps() {
+    // https://api.openweathermap.org/data/2.5/onecall?lat=51.5013715344381&lon=-0.14184897815474495&appid=f3d178f07e3018dd1eab495368872fc9&units=metric&exclude=hourly,minutely
+
+    const baseURL = "https://api.openweathermap.org/data/2.5/onecall";
+    const searchParams = new URLSearchParams();
+
+    const apiOptions = {
+        lat: "51.5013715344381",
+        lon: "-0.14184897815474495",
+        apiKey: "f3d178f07e3018dd1eab495368872fc9",
+        units: "metric",
+        exclude: "hourly,minutely"
+    }
+
+    for (const [key, value] of Object.entries(apiOptions)) {
+        searchParams.set(key, value);
+    }
+
+    const apiRoute = `${baseURL}?${searchParams.toString()}`;
+    console.log(apiRoute);
+
+    // Fetch data from external API
+    const res = await fetch(apiRoute);
+    const data = await res.json();
+
+    // Pass data to the page via props
+    return { props: { data } }
+}
+
+export default function Home({ data }) {
+    console.log(data);
     return (
         <div className="container">
             <Head>
@@ -21,7 +51,7 @@ export default function Home() {
                     </h1>
                 </header>
                 <div className="transactions">
-                    
+
                 </div>
             </main>
 
