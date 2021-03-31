@@ -57,7 +57,7 @@ export default function Home({ weather }) {
                             day={forecast.dt}
                             minTemp={forecast.temp.min}
                             maxTemp={forecast.temp.max}
-                            weather={forecast.weather[0].main}
+                            weather={forecast.weather[0]}
                             key={forecast.dt}
                         />
                     ))}
@@ -130,6 +130,10 @@ export default function Home({ weather }) {
                 padding: 0;
                 margin: 0;
               }
+              
+              body {
+                background: #94e0f1;
+              }
 
               * {
                 box-sizing: border-box;
@@ -145,7 +149,12 @@ function Forecast({day, minTemp, maxTemp, weather}) {
             <div className="forecast">
                 <div className="day">{convertDayNumberToWord(new Date(day * 1000).getDay())}</div>
                 <div className="temp">min {formatTemp(minTemp)} | max {formatTemp(maxTemp)}</div>
-                <div className="weather">{weather}</div>
+                <div className="weather">
+                    <WeatherIcon
+                        weatherCode={weather.icon}
+                        weatherDescription={weather.description}
+                    />
+                </div>
             </div>
 
             <style jsx>{`
@@ -188,6 +197,24 @@ function Forecast({day, minTemp, maxTemp, weather}) {
                     font-family: 'Roboto Mono', monospace;
                     font-weight: 600;
                 }
+            `}</style>
+        </>
+    )
+}
+
+function WeatherIcon({ weatherCode, weatherDescription }) {
+    return (
+        <>
+            <img
+                src={`https://openweathermap.org/img/wn/${weatherCode}@2x.png`}
+                alt={weatherDescription}
+                title={weatherDescription}
+                className="weather-icon"
+            />
+            <style jsx>{`
+                .weather-icon {
+                    width: 50px;
+                }            
             `}</style>
         </>
     )
