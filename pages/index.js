@@ -1,31 +1,6 @@
 import Head from 'next/head'
-import {promises as fs} from 'fs'
-import path from 'path'
-import Papa from 'papaparse'
 
-export async function getStaticProps() {
-    const filePath = path.join(process.cwd(), 'data/transactions.csv');
-    const fileContents = await fs.readFile(filePath, 'utf8');
-    return {
-        props: {
-            rawFileContents: fileContents,
-            transactions: Papa.parse(fileContents, {
-                header: true,
-                delimiter: ",",
-                transform: (value, columnName) => {
-                    if (columnName === "Amount") {
-                        return parseFloat(value);
-                    }
-
-                    return value;
-                }
-            }).data
-        }
-    }
-}
-
-export default function Home({transactions, rawFileContents}) {
-    console.log(transactions, rawFileContents);
+export default function Home() {
     return (
         <div className="container">
             <Head>
@@ -46,14 +21,7 @@ export default function Home({transactions, rawFileContents}) {
                     </h1>
                 </header>
                 <div className="transactions">
-                    {transactions.map(transaction => (transaction.Amount &&
-                        <Transaction
-                            date={transaction.Date}
-                            amount={transaction.Amount}
-                            merchant={transaction.Description}
-                            key={`${transaction.Date}-${transaction.Amount}-${Math.random()}`}
-                        />
-                    ))}
+                    
                 </div>
             </main>
 
