@@ -32,7 +32,7 @@ export default function Home({transactions, rawFileContents}) {
                 <title>Major League Forecasting</title>
                 <link rel="icon" href="/favicon.ico"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com"/>
-                <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet"/>
+                <link href="https://fonts.googleapis.com/css2?family=Bevan&display=swap" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap" rel="stylesheet" />
             </Head>
@@ -92,6 +92,7 @@ export default function Home({transactions, rawFileContents}) {
                 z-index: 1000;
                 background: #f9f9f9;
                 border-bottom: 4px solid black;
+                font-family: 'Bevan', cursive;
               }
 
               header h1 {
@@ -121,7 +122,6 @@ export default function Home({transactions, rawFileContents}) {
               body {
                 padding: 0;
                 margin: 0;
-                font-family: 'Luckiest Guy', cursive;
               }
 
               * {
