@@ -1,4 +1,5 @@
 # Major League Forecasting
+![Vercel](https://vercelbadge.vercel.app/api/robzwolf/major-league-forecasting)
 
 Deployed at https://major-league-forecasting.v.robbie.dev/
 
